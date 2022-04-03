@@ -1,0 +1,21 @@
+# Calculator command
+
+# You can use `$1`, `$2`... to get the arguments passed
+
+#! /bin/bash
+
+if [ $2 == "+" ]; then
+	echo "The sum of the numbers is $(( $1 + $3 ))"
+	
+elif [ $2 == "-" ]; then
+	echo "The difference of the numbers is $(( $1 - $3 ))"
+	
+elif [ $2 == "**" ]; then
+	echo "The product of the numbers is $(( $1 \* $n3 ))"
+	
+elif [ $2 == "/" ]; then
+	echo "The quotient of the numbers is $(( $1 / $3 ))"
+	
+else
+	echo "INVALID REQUEST"
+fi

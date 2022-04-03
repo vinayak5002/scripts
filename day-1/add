@@ -1,0 +1,7 @@
+# add command
+
+# You can use `$1`, `$2`... to get the arguments passed
+
+#! /bin/bash
+
+echo "$(( $1 + $2 ))"
