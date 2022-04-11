@@ -1,0 +1,6 @@
+This text us from src.txt
+This is to be written in dest.txt
+
+This text us from src.txt
+This is to be written in dest.txt
+
