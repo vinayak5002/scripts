@@ -5,7 +5,7 @@
 echo "Displaying files in the directory: $1"
 echo "\n"
 
-for i in `ls in $1`
+for i in `ls $1`
 do
 	echo $i
 done
