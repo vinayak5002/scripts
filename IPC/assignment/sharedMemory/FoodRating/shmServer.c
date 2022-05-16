@@ -13,13 +13,32 @@ void die(char *s)
     perror(s);
     exit(1);
 }
+
+struct Book{
+	int pages;
+	char *title;
+	int price;
+};
+
+void getBook(struct Book *bookObj){
+	printf("Enter title of the book: ");
+	scanf("%s", &bookObj->title);
+
+	//strcpy(bookObj->title, "None\0");
+	
+	printf("Enter price of the book: ");
+	scanf("%d", &bookObj->price);
+	
+	printf("Enter  no. of pages in the book: ");
+	scanf("%d", &bookObj->pages);
+}
  
 int main()
 {
     char c;
     int shmid;
     key_t key;
-    char *shm, *s;
+    struct Book *shm, *s;
  
     key = 5678;
  
@@ -36,7 +55,7 @@ int main()
     s = shm;
  
 	printf("Enter input: ");
-	gets(s);
+	getBook(s);
  
     /*
      * Wait until the other process
@@ -44,8 +63,8 @@ int main()
      * to '*', indicating that it has read what
      * we put there.
      */
-    while (*shm != '*'){puts("\nServer waiting\n");
-        sleep(1);}
+//    while (*shm != (void *) 0){puts("\nServer waiting\n");
+//        sleep(1);}
 puts("\nServer exiting after client read data\n");
  
     exit(0);

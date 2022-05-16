@@ -12,12 +12,18 @@ void die(char *s)
     perror(s);
     exit(1);
 }
+
+struct Book{
+	int pages;
+	char *title;
+	int price;
+};
  
 int main()
 {
     int shmid;
     key_t key;
-    char *shm, *s;
+    struct Book *shm, *s;
  
     key = 5678;
  
@@ -26,11 +32,13 @@ int main()
  
     if ((shm = shmat(shmid, NULL, 0)) == (char *) -1)
         die("shmat");
+        
+    s = shm;
  
     //Now read what the server put in the memory.
-    printf("%s", shm);
+    printf("%s", s->title);
     
-    shm = '*';
+    s = NULL;
     
  	puts("\nClient exiting\n");
     exit(0);
