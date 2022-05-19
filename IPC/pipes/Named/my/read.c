@@ -12,11 +12,14 @@ int main()
 	int fd;
 	char *readBuff;
 	
-	mkfifo(fifoPath, 0666);
+	if((mkfifo(fifoPath, 0666)) == -1){
+		printf("Not able to create named pipe :'(");
+		exit(1);
+	} 
 	
 	fd = open(fifoPath, O_RDONLY);
 	
-	if((read(fd, readBuff, 128)) < 0){
+	if((read(fd, readBuff, 128)) == -1){
 		printf("Couldn't Read\n");
 		exit(1);
 	}

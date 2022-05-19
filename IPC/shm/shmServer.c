@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
  
 #define MAXSIZE     27
  
@@ -28,26 +29,16 @@ int main()
  
     if ((shm = shmat(shmid, NULL, 0)) == (char *) -1)
         die("shmat");
- 
-    /*
-     *      * Put text into the memory for the
-     *        other process to read.
-     *        */
+
     s = shm;
  
-    for (c = 'a'; c <= 'z'; c++)
-        *s++ = c;
- 
- 
-    /*
-     * Wait until the other process
-     * changes the first character of our memory
-     * to '*', indicating that it has read what
-     * we put there.
-     */
-    while (*shm != '*'){puts("\nServer waiting\n");
-        sleep(1);}
-puts("\nServer exiting after client read data\n");
+    printf("Enter message: ");
+    scanf("%[^\n]",shm);
+    getchar();
+
+	puts("\nServer exiting after client read data\n");
+	
+	shmdt(shm);
  
     exit(0);
 }

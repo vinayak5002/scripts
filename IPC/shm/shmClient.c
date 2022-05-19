@@ -38,7 +38,7 @@ int main()
      *the segment.
      */
     *shm = '*';
- puts("\nClient exiting\n");
+	puts("\nClient exiting\n");
     exit(0);
 }
 
