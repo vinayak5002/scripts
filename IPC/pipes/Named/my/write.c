@@ -9,10 +9,12 @@
 int main()
 {	
 	int fd;
-	char *fifoPath = "/home/vinayak/Documents/scripts/IPC/pipes/Named/my/vin.txt";
-	char *writeBuff = "Hello, I am vinayak\n\0";
+	char *fifoPath = "/home/vinayak/Documents/scripts/IPC/pipes/Named/my/vin";
+	char writeBuff[128] = "Hello, I am vinayak\n\0";
 	
 	mkfifo(fifoPath, 0666|O_CREAT);
+	
+	close(fd);
 	
 	fd = open(fifoPath, O_WRONLY);
 	

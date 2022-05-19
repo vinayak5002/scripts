@@ -8,7 +8,7 @@
 
 int main()
 {
-	char *fifoPath = "/home/vinayak/Documents/scripts/IPC/pipes/Named/my/vin.txt";
+	char *fifoPath = "/home/vinayak/Documents/scripts/IPC/pipes/Named/my/vin";
 	int fd;
 	char *readBuff;
 	
@@ -16,6 +16,8 @@ int main()
 		printf("Not able to create named pipe :'(");
 		exit(1);
 	} 
+	
+	close(fd);
 	
 	fd = open(fifoPath, O_RDONLY);
 	

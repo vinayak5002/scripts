@@ -8,7 +8,7 @@
 #include <unistd.h> 
 
 int main() 
-{
+{ 
 	int fd; 
 
 	// FIFO file path 
@@ -16,12 +16,11 @@ int main()
 
 	// Creating the named file(FIFO) 
 	// mkfifo(<pathname>, <permission>) 
-
 	mkfifo(myfifo, 0666); 
 
 	char arr1[80], arr2[80]; 
 	while (1) 
-	{	
+	{ 
 		// Open FIFO for write only 
 		fd = open(myfifo, O_WRONLY); 
 
