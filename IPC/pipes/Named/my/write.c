@@ -12,7 +12,7 @@ int main()
 	char *fifoPath = "/home/vinayak/Documents/scripts/IPC/pipes/Named/my/vin";
 	char writeBuff[128] = "Hello, I am vinayak\n\0";
 	
-	mkfifo(fifoPath, 0666|O_CREAT);
+	mkfifo(fifoPath, 0666);
 	
 	close(fd);
 	

@@ -10,18 +10,15 @@ int main()
 {
 	char *fifoPath = "/home/vinayak/Documents/scripts/IPC/pipes/Named/my/vin";
 	int fd;
-	char *readBuff;
+	char readBuff[80];
 	
-	if((mkfifo(fifoPath, 0666)) == -1){
-		printf("Not able to create named pipe :'(");
-		exit(1);
-	} 
+	mkfifo(fifoPath, 0666);
 	
 	close(fd);
 	
 	fd = open(fifoPath, O_RDONLY);
 	
-	if((read(fd, readBuff, 128)) == -1){
+	if((read(fd, readBuff, 80)) == -1){
 		printf("Couldn't Read\n");
 		exit(1);
 	}
