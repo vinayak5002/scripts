@@ -3,9 +3,9 @@
 arr1: .word 34, 23, 16, 25, 43, 36, 6, 12, 17, 19, 33, 39, 21, 37, 50
 arr2: .word 0
 
-len: .word 16
+len: .word 15
 
-endl: .asciiz "\n"
+endl: .asciiz " "
 
 .text
 .globl main
@@ -17,7 +17,7 @@ li $s0, 0  #counter
 li $s1, 1  #arr1 pointer
 li $s2, 1  #arr2 pointer
 li $s3, 1  #one
-li $s4, 16
+lw $s4, len
 li $s5,0
 
 la $t0, arr1
@@ -45,7 +45,7 @@ loop:
 
 blt $s0, $s4, loop
 
-li $s0, 1
+li $s0, 0
 la $t0, arr2
 
 loop1:
