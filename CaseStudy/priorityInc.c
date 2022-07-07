@@ -23,7 +23,7 @@ main()
         printf("The process already has highed priority\n");
     }
     else{
-        sp.sched_priority += 10;
+        sp.sched_priority = maxPriority;
         
         printf("Updating this processes priority to %d\n");
 

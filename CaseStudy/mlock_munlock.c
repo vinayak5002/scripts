@@ -32,3 +32,33 @@ free_workbuf(void *ptr, size_t size)
     /* free the memory */
     free(ptr);
 }
+
+int main()
+{
+    int *ptr;
+    int n = 5, i;
+
+    ptr = (int*) alloc_workbuf(n*sizeof(int));
+
+    if(ptr == NULL){
+        printf("Page locking failed\n");
+        exit(1);
+    }
+    else{
+        printf("Page locking sucessfull\n");
+
+        for(int i=0; i<n; i++){
+            ptr[i] = i+1;
+        }
+
+        printf("array stored in locked page\(s\) are:\n");
+
+        for(int i=0; i<n; i++){
+            printf("%d ", ptr[i]);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
