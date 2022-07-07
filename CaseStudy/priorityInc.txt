@@ -4,7 +4,9 @@
 
 main()
 {
-    int maxPriority = sched_get_priority_max(SCHED_FIFO);
+    int policy = sched_getscheduler(0);
+
+    int maxPriority = sched_get_priority_max(policy);
 
     struct sched_param sp;
     int ret;
@@ -15,19 +17,24 @@ main()
         exit(1);
     }
 
-    printf("Max priority is %d and this processes priority is %d\n", maxPriority, sp.sched_priority);
+    printf("Max priority that can be assigned to this process is %d and this processes priority is %d\n", maxPriority, sp.sched_priority);
 
-    sp.sched_priority = maxPriority;
-
-    printf("Updating this processes priority to %d\n");
-
-    ret = sched_setscheduler(0, SCHED_FIFO, &sp);
-    if(ret == -1){
-        printf("Increasing priority failed\n");
-        exit(1);
+    if(maxPriority == sp.sched_priority){
+        printf("The process already has highed priority\n");
     }
+    else{
+        sp.sched_priority += 10;
+        
+        printf("Updating this processes priority to %d\n");
 
-    printf("update sucesses\n");
+        ret = sched_setscheduler(0, SCHED_FIFO, &sp);
+        if(ret == -1){
+            printf("Increasing priority failed\n");
+            exit(1);
+        }
+
+        printf("update sucesses\n");
+    }
 
     return 0;
 
