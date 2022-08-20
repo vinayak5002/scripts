@@ -7,7 +7,7 @@ int main()
     cin>>T;
 
     for(int I=1; I<=T; I++){
-        int n, m, total;
+        int n, m, total = 0;
         cin>>n>>m;
 
         int c[n];
